@@ -1,0 +1,65 @@
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+
+const pacotes = [
+  {
+    titulo: 'Pacote 4 Dias',
+    dias: [
+      'Chegada em Alto Paraíso e pôr do sol no Mirante da Janela',
+      'Cataratas dos Couros com trilha e almoço de trilha',
+      'Vale da Lua + Cachoeira Almécegas I',
+      'Encerramento com tempo livre para compras'
+    ]
+  },
+  {
+    titulo: 'Pacote 5 Dias',
+    dias: [
+      'Chegada + Cachoeira dos Cristais',
+      'Cataratas dos Couros',
+      'Vale da Lua + Almécegas I',
+      'Loquinhas + Mirante do Ventilador',
+      'Encerramento'
+    ]
+  },
+  {
+    titulo: 'Pacote 6 Dias',
+    dias: [
+      'Chegada + Cristais',
+      'Cataratas dos Couros',
+      'Vale da Lua + Almécegas I',
+      'Loquinhas + Mirante do Ventilador',
+      'Parque Nacional + Santa Bárbara',
+      'Encerramento'
+    ]
+  }
+];
+
+export default function Home() {
+  return (
+    <div className="min-h-screen bg-gray-50 p-6">
+      <header className="text-center mb-10">
+        <h1 className="text-4xl font-bold text-blue-600">ROTA 255</h1>
+        <p className="text-lg mt-2 text-gray-600">Explore Jalapão com conforto e aventura!</p>
+      </header>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {pacotes.map((pacote, index) => (
+          <Card key={index} className="hover:shadow-lg transition-all">
+            <CardContent className="p-6">
+              <h2 className="text-xl font-bold mb-2">{pacote.titulo}</h2>
+              <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700">
+                {pacote.dias.map((dia, i) => (
+                  <li key={i}>{dia}</li>
+                ))}
+              </ul>
+              <Link href={`/agenda?pacote=${pacote.titulo}`}>
+                <Button className="w-full mt-4">Agendar Agora</Button>
+              </Link>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}

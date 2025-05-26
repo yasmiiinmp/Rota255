@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "primitives": "github:radix-ui/primitives"
+  }
+}
